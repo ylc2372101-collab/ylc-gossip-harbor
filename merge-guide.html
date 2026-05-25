@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>合成大图鉴 - 《绯闻港口》攻略站</title>
+    <style>
+        /* --- 1. 沿用首页核心配色 --- */
+        :root {
+            --primary-pink: #ff7597;
+            --light-pink: #fff0f3;
+            --ocean-blue: #4cc9f0;
+            --ocean-dark: #3a86c8;
+            --text-dark: #4a4a4a;
+            --table-header: #ffeef2;
+        }
+
+        body { 
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            padding: 0; 
+            color: var(--text-dark);
+            background-color: #fffbfc;
+        }
+
+        header { 
+            background: linear-gradient(135deg, #ff92ae 0%, var(--primary-pink) 100%); 
+            color: white; 
+            padding: 1.5rem 1rem; 
+            text-align: center; 
+        }
+        header h1 { margin: 0; font-size: 1.8rem; }
+
+        /* --- 2. 导航栏 --- */
+        nav { background: var(--ocean-blue); padding: 0.3rem; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        nav a { color: white; text-decoration: none; font-weight: bold; padding: 6px 12px; border-radius: 20px; font-size: 0.9rem; }
+        nav a:hover, nav a.active { background-color: var(--ocean-dark); }
+
+        /* --- 3. 页面主体：双栏布局 --- */
+        .container { 
+            max-width: 1200px; 
+            margin: 20px auto; 
+            padding: 0 15px; 
+            display: flex;
+            gap: 20px;
+        }
+
+        /* 左侧/顶部快捷锚点菜单 */
+        .category-menu {
+            width: 200px;
+            flex-shrink: 0;
+            background: white;
+            border: 2px solid var(--light-pink);
+            border-radius: 12px;
+            padding: 15px;
+            align-self: flex-start;
+            position: sticky;
+            top: 20px; /* 电脑端滚动时固定在侧边 */
+        }
+        .category-menu h3 { margin-top: 0; color: var(--primary-pink); font-size: 1.1rem; border-bottom: 2px solid var(--light-pink); padding-bottom: 5px;}
+        .category-menu ul { list-style: none; padding: 0; margin: 0; }
+        .category-menu li { margin: 10px 0; }
+        .category-menu a { color: var(--text-dark); text-decoration: none; font-size: 0.95rem; font-weight: bold;}
+        .category-menu a:hover { color: var(--primary-pink); }
+
+        /* 右侧核心图鉴内容 */
+        .main-content { flex-grow: 1; }
+
+        .item-section {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(255, 117, 151, 0.05);
+            border: 1px solid #eee;
+        }
+        .item-section h2 { 
+            color: var(--primary-pink); 
+            margin-top: 0; 
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .meta-info {
+            background: #f0fafd;
+            border-left: 4px solid var(--ocean-blue);
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* --- 4. 响应式美化表格 --- */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto; /* 关键：手机端超出时可横向滚动，不挤压内容 */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            min-width: 500px; /* 保证表格在窄屏下有足够宽度 */
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            font-size: 0.95rem;
+        }
+        th {
+            background-color: var(--table-header);
+            color: var(--primary-pink);
+            font-weight: bold;
+        }
+        
+        /* 模拟图片占位符，后期换成真实 <img> */
+        .item-icon {
+            width: 40px;
+            height: 40px;
+            background: #ffe3e9;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: var(--primary-pink);
+            font-weight: bold;
+        }
+
+        /* --- 5. 手机端极简适配 --- */
+        @media (max-width: 768px) {
+            .container { flex-direction: column; }
+            .category-menu { width: auto; position: static; }
+            .category-menu ul { display: flex; flex-wrap: wrap; gap: 10px; }
+            .category-menu li { margin: 0; }
+            .category-menu a { background: var(--light-pink); padding: 5px 12px; border-radius: 15px; color: var(--primary-pink); font-size: 0.85rem;}
+        }
+
+        footer { text-align: center; padding: 20px; background: #fdf5f7; margin-top: 40px; font-size: 0.85rem; color: #999; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🔮 绯闻港口 - 全物品合成大图鉴</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">首页</a>
+        <a href="merge-guide.html" class="active">合成图鉴</a>
+        <a href="events.html">限时活动</a>
+        <a href="backpack.html">背包优化</a>
+        <a href="story.html">剧情与装修</a>
+    </nav>
+
+    <div class="container">
+        
+        <!-- 左侧/顶部快捷目录 -->
+        <aside class="category-menu">
+            <h3>快速跳转</h3>
+            <ul>
+                <li><a href="#seafood">🐟 海鲜系列</a></li>
+                <li><a href="#coffee">☕ 咖啡系列</a></li>
+                <li><a href="#dessert">🍰 甜品系列</a></li>
+            </ul>
+        </aside>
+
+        <!-- 右侧图鉴正文 -->
+        <main class="main-content">
+
+            <!-- 分类：海鲜系列 -->
+            <section id="seafood" class="item-section">
+                <h2>🐟 海鲜系列 (Seafood Chain)</h2>
+                <div class="meta-info">
+                    <strong>主要来源：</strong> 产自 【高级购物袋 / 鱼缸】 (Cool-down: 2小时) <br>
+                    <strong>核心用途：</strong> 经常用于交付 Quinn 餐厅中后期的双人正餐订单，极其消耗体力。
+                </div>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 15%;">等级</th>
+                                <th style="width: 20%;">图标</th>
+                                <th style="width: 30%;">道具名称</th>
+                                <th style="width: 35%;">合并收益 / 备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Lv.1</td>
+                                <td><div class="item-icon">海鲜1</div></td>
+                                <td><strong>小虾米 (Raw Shrimp)</strong></td>
+                                <td>基础素材，可卖出 1 金币</td>
+                            </tr>
+                            <tr>
+                                <td>Lv.2</td>
+                                <td><div class="item-icon">海鲜2</div></td>
+                                <td><strong>蛤蜊 (Clam)</strong></td>
+                                <td>由 2 个小虾米合成</td>
+                            </tr>
+                            <tr>
+                                <td>Lv.3</td>
+                                <td><div class="item-icon">海鲜3</div></td>
+                                <td><strong>螃蟹 (Crab)</strong></td>
+                                <td>初级订单常见需求</td>
+                            </tr>
+                            <tr>
+                                <td>Lv.4</td>
+                                <td><div class="item-icon">海鲜4</div></td>
+                                <td><strong>龙虾 (Lobster)</strong></td>
+                                <td><span style="color: #e65c80; font-weight: bold;">⭐ 关键节点</span>，开始具备较高任务价值</td>
+                            </tr>
+                            <!-- 攻略主可以根据实际游戏数据继续往下加... -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 分类：咖啡系列 -->
+            <section id="coffee" class="item-section">
+                <h2>☕ 咖啡系列 (Coffee Chain)</h2>
+                <div class="meta-info">
+                    <strong>主要来源：</strong> 产自 【咖啡机】 <br>
+                    <strong>核心用途：</strong> 贯穿游戏前中后期的基础饮品订单，建议常备 Lv.3 以上半成品。
+                </div>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 15%;">等级</th>
+                                <th style="width: 20%;">图标</th>
+                                <th style="width: 30%;">道具名称</th>
+                                <th style="width: 35%;">合并收益 / 备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Lv.1</td>
+                                <td><div class="item-icon">咖啡1</div></td>
+                                <td><strong>咖啡豆 (Coffee Beans)</strong></td>
+                                <td>基础素材</td>
+                            </tr>
+                            <tr>
+                                <td>Lv.2</td>
+                                <td><div class="item-icon">咖啡2</div></td>
+                                <td><strong>研磨咖啡粉 (Ground Coffee)</strong></td>
+                                <td>由 2 个咖啡豆合成</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2026 绯闻港口玩家同人攻略站。持续更新中...</p>
+    </footer>
+
+</body>
+</html>

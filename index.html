@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>《绯闻港口》玩家攻略站 - Gossip Harbor 实用指南</title>
+    <meta name="description" content="提供最全的《绯闻港口》（Gossip Harbor）合成图鉴、活动攻略、最新兑换码及背包优化指南。">
+    <style>
+        /* --- 1. 全局样式与《绯闻港口》主题配色 --- */
+        :root {
+            --primary-pink: #ff7597;       /* 核心芭比粉：按钮与核心高亮 */
+            --light-pink: #fff0f3;         /* 浅粉底色：卡片背景 */
+            --ocean-blue: #4cc9f0;         /* 海滨天蓝：导航栏与链接 */
+            --ocean-dark: #3a86c8;         /* 深海蓝：导航悬停与重要文字 */
+            --accent-orange: #ffb703;      /* 活力橙黄：公告栏与高亮提示 */
+            --text-dark: #4a4a4a;          /* 深灰文本：比纯黑更柔和 */
+        }
+
+        body { 
+            font-family: "PingFang SC", "Microsoft YaHei", -apple-system, sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            padding: 0; 
+            color: var(--text-dark); 
+            background-color: #fffbfc; /* 极浅的粉白底色 */
+        }
+
+        /* --- 2. 头部：粉色梦幻渐变 --- */
+        header { 
+            background: linear-gradient(135deg, #ff92ae 0%, var(--primary-pink) 100%); 
+            color: white; 
+            padding: 2.5rem 1rem; 
+            text-align: center; 
+            box-shadow: 0 4px 15px rgba(255, 117, 151, 0.3);
+        }
+        header h1 { 
+            margin: 0; 
+            font-size: 2.2rem; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.15); 
+        }
+        header p { 
+            margin: 10px 0 0 0; 
+            font-size: 1.1rem; 
+            opacity: 0.9; 
+        }
+
+        /* --- 3. 导航栏：海滨度假蓝 --- */
+        nav { 
+            background: var(--ocean-blue); 
+            padding: 0.3rem; 
+            display: flex; 
+            justify-content: center; 
+            gap: 10px; 
+            flex-wrap: wrap;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        nav a { 
+            color: white; 
+            text-decoration: none; 
+            font-weight: bold; 
+            padding: 8px 16px; 
+            border-radius: 20px; /* 胶囊圆角，更显可爱 */
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        nav a:hover, nav a.active { 
+            background-color: var(--ocean-dark); 
+            transform: scale(1.05); /* 悬停微放大 */
+        }
+
+        /* --- 4. 版心与公告栏：活力橙黄 --- */
+        .container { 
+            max-width: 1100px; 
+            margin: 30px auto; 
+            padding: 0 20px; 
+        }
+        
+        .notice-bar { 
+            background: #fff9e6; 
+            border: 2px dashed var(--accent-orange); 
+            border-radius: 12px; 
+            padding: 15px; 
+            margin-bottom: 30px; 
+        }
+        .notice-bar strong { 
+            color: #d48300; 
+            font-size: 1.1rem; 
+        }
+        .notice-bar ul { margin: 8px 0 0 0; padding-left: 20px; }
+        .notice-bar code { 
+            background: var(--accent-orange); 
+            color: white; 
+            padding: 2px 6px; 
+            border-radius: 4px; 
+            font-weight: bold; 
+        }
+
+        /* --- 5. 快速指引：卡片式网格 --- */
+        h2.section-title {
+            color: var(--primary-pink);
+            text-align: center;
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        /* 标题下方的小装饰线 */
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--primary-pink);
+            border-radius: 2px;
+            margin: 8px auto 0 auto;
+        }
+
+        .grid-menu { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 25px; 
+        }
+        
+        /* 卡片精致化：粉色边缘与阴影 */
+        .card { 
+            background: white;
+            border: 2px solid var(--light-pink); 
+            border-radius: 16px; 
+            padding: 20px; 
+            box-shadow: 0 6px 12px rgba(255, 117, 151, 0.05); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        /* 鼠标悬停卡片浮起效果 */
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(255, 117, 151, 0.15);
+            border-color: var(--primary-pink);
+        }
+        .card h3 { 
+            margin-top: 0; 
+            color: var(--primary-pink); 
+            font-size: 1.3rem;
+        }
+        .card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        /* 卡片内的可爱的粉色按钮 */
+        .card .btn {
+            display: inline-block;
+            text-align: center;
+            background: var(--primary-pink);
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        .card .btn:hover {
+            background: #e65c80;
+        }
+
+        /* --- 6. 页脚 --- */
+        footer { 
+            text-align: center; 
+            padding: 25px; 
+            background: #fdf5f7; 
+            border-top: 1px solid var(--light-pink);
+            margin-top: 60px; 
+            font-size: 0.85rem; 
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. 网站头部 -->
+    <header>
+        <h1>绯闻港口 (Gossip Harbor) 攻略站</h1>
+        <p>🔍 告别爆仓！合成图鉴、限时活动、最新兑换码一网打尽</p>
+    </header>
+
+    <!-- 2. 导航栏 -->
+    <nav>
+        <a href="index.html" class="active">首页</a>
+        <a href="merge-guide.html">合成图鉴</a>
+        <a href="events.html">限时活动</a>
+        <a href="backpack.html">背包优化</a>
+        <a href="story.html">剧情与装修</a>
+    </nav>
+
+    <!-- 3. 主体内容区 -->
+    <div class="container">
+
+        <!-- 3.1 动态公告栏 -->
+        <section class="notice-bar">
+            <strong>🔥 最新福利与动态：</strong>
+            <ul>
+                <li>最新兑换码：<code>GOSSIP2026</code> (奖励：100能量) - 有效期至本周末</li>
+                <li>当前活动：季赛“烘焙大赛”进行中，建议预留烤箱产出物。</li>
+            </ul>
+        </section>
+
+        <!-- 3.2 核心功能快捷入口 -->
+        <h2 class="section-title">快速指引</h2>
+        <main class="grid-menu">
+            
+            <!-- 卡片 1：合成图鉴 -->
+            <article class="card">
+                <div>
+                    <h3>🔮 合成大图鉴</h3>
+                    <p>包含海鲜、咖啡、甜品等全物品升级树。不知道最高级长啥样？点这里就对了。</p>
+                </div>
+                <a href="merge-guide.html" class="btn">查看图鉴 →</a>
+            </article>
+
+            <!-- 卡片 2：背包空间管理 -->
+            <article class="card">
+                <div>
+                    <h3>🎒 爆仓救星：背包指南</h3>
+                    <p>格子不够用？教你哪些道具可以果断卖掉，哪些必须留到最后。附开格子成本表。</p>
+                </div>
+                <a href="backpack.html" class="btn">空间优化秘籍 →</a>
+            </article>
+
+            <!-- 卡片 3：活动满奖励攻略 -->
+            <article class="card">
+                <div>
+                    <h3>📅 活动与卡牌</h3>
+                    <p>周末寻宝、卡牌收集（Album）高效率毕业指南，教你如何不花钱拿满体力奖励。</p>
+                </div>
+                <a href="events.html" class="btn">活动排期表 →</a>
+            </article>
+
+            <!-- 卡片 4：剧情与角色八卦 -->
+            <article class="card">
+                <div>
+                    <h3>📜 剧情与装修预览</h3>
+                    <p>追剧党福利！汇总 Quinn 的餐厅修缮星星消耗，提前预览不同风格的装修效果。</p>
+                </div>
+                <a href="story.html" class="btn">吃瓜看剧情 →</a>
+            </article>
+
+        </main>
+    </div>
+
+    <!-- 4. 页脚 -->
+    <footer>
+        <p>© 2026 绯闻港口玩家同人攻略站。本站所有游戏图像版权归游戏官方所有。</p>
+    </footer>
+
+</body>
+</html>

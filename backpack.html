@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爆仓救星：背包优化与开格子成本 - 《绯闻港口》攻略站</title>
+    <style>
+        /* --- 沿用全站马卡龙粉蓝主题配色 --- */
+        :root {
+            --primary-pink: #ff7597;
+            --light-pink: #fff0f3;
+            --ocean-blue: #4cc9f0;
+            --ocean-dark: #3a86c8;
+            --text-dark: #4a4a4a;
+            --danger-red: #ff4d6d;
+            --warning-orange: #ffb703;
+            --success-green: #2ec4b6;
+        }
+
+        body { 
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            padding: 0; 
+            color: var(--text-dark);
+            background-color: #fffbfc;
+        }
+
+        header { 
+            background: linear-gradient(135deg, #ff92ae 0%, var(--primary-pink) 100%); 
+            color: white; 
+            padding: 1.5rem 1rem; 
+            text-align: center; 
+        }
+        header h1 { margin: 0; font-size: 1.8rem; }
+
+        nav { background: var(--ocean-blue); padding: 0.3rem; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        nav a { color: white; text-decoration: none; font-weight: bold; padding: 6px 12px; border-radius: 20px; font-size: 0.9rem; }
+        nav a:hover, nav a.active { background-color: var(--ocean-dark); }
+
+        .container { max-width: 1000px; margin: 20px auto; padding: 0 15px; }
+
+        /* --- 核心卡片样式 --- */
+        .section-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(255, 117, 151, 0.05);
+            border: 1px solid #eee;
+        }
+        .section-card h2 { 
+            color: var(--primary-pink); 
+            margin-top: 0; 
+            font-size: 1.4rem;
+            border-bottom: 2px dashed var(--light-pink);
+            padding-bottom: 10px;
+        }
+
+        /* 提示框 */
+        .tips-box {
+            background: #fff3cd;
+            border-left: 4px solid var(--warning-orange);
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+        }
+
+        /* --- 留存优先级标签样式 --- */
+        .priority-list { list-style: none; padding: 0; }
+        .priority-item { 
+            display: flex; 
+            align-items: flex-start; 
+            gap: 15px; 
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+        }
+        .badge {
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            margin-top: 3px;
+        }
+        .badge-high { background-color: var(--danger-red); }
+        .badge-mid { background-color: var(--warning-orange); }
+        .badge-low { background-color: var(--success-green); }
+
+        /* --- 成本数据表格 --- */
+        .table-responsive { width: 100%; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; text-align: center; }
+        th, td { padding: 12px; border-bottom: 1px solid #eee; font-size: 0.95rem; }
+        th { background-color: var(--light-pink); color: var(--primary-pink); font-weight: bold; }
+        tr:hover { background-color: #fff9fa; }
+
+        footer { text-align: center; padding: 20px; background: #fdf5f7; margin-top: 40px; font-size: 0.85rem; color: #999; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🎒 背包管理与开格子成本攻略</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">首页</a>
+        <a href="merge-guide.html">合成图鉴</a>
+        <a href="events.html">限时活动</a>
+        <a href="backpack.html" class="active">背包优化</a>
+        <a href="story.html">剧情与装修</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- 板块 1：断舍离优先级指南 -->
+        <section class="section-card">
+            <h2>🚨 物品留存“断舍离”优先级</h2>
+            <div class="tips-box">
+                <strong>💡 爆仓黄金法则：</strong> 永远不要为了“以后可能会用到”而保留超过3个以上的低级半成品！格子比物品更值钱！
+            </div>
+            
+            <ul class="priority-list">
+                <li class="priority-item">
+                    <span class="badge badge-high">绝对保留 (红灯)</span>
+                    <div>
+                        <strong>生成器碎片、钻石/能量罐（最高级）、限定卡牌包</strong><br>
+                        <small style="color: #666;">这些道具极其稀有。未合成到最高级的钻石和蓝色能量罐尽量塞在背包里，攒满最高级再吃，收益能翻倍。</small>
+                    </div>
+                </li>
+                <li class="priority-item">
+                    <span class="badge badge-mid">观望保留 (黄灯)</span>
+                    <div>
+                        <strong>高等级半成品（如 Lv.4 龙虾、Lv.5 电钻）</strong><br>
+                        <small style="color: #666;">属于合成步数超过 16 步的高级道具。即使当前任务不要，也绝对不要卖，因为重新合成会极其消耗体力。</small>
+                    </div>
+                </li>
+                <li class="priority-item">
+                    <span class="badge badge-low">果断变现 (绿灯)</span>
+                    <div>
+                        <strong>低级面包（面粉袋）、低级螺丝、单独的1级金币</strong><br>
+                        <small style="color: #666;">这些物品极易产出。一旦格子见底，立刻把它们卖掉换取金币，腾出主棋盘空间才是王道。</small>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 板块 2：开格子成本表 -->
+        <section class="section-card">
+            <h2>💎 背包解锁格子成本表</h2>
+            <p style="font-size: 0.9rem; color: #666; margin-top: -5px;">注：随着解锁格子数量增加，所需钻石会呈阶梯式暴涨。请根据自身钻石储备合理规划。</p>
+            
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">槽位编号 (Slot)</th>
+                            <th style="width: 25%;">消耗钻石数量</th>
+                            <th style="width: 25%;">累计消耗</th>
+                            <th style="width: 25%;">性价比建议</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>第 1 - 5 格</td>
+                            <td><strong>10 ~ 50</strong> 💎</td>
+                            <td>50 💎</td>
+                            <td style="color: var(--success-green); font-weight: bold;">💸 闭眼必开</td>
+                        </tr>
+                        <tr>
+                            <td>第 6 - 10 格</td>
+                            <td><strong>100 ~ 200</strong> 💎</td>
+                            <td>650 💎</td>
+                            <td style="color: var(--success-green); font-weight: bold;">👍 优先解锁</td>
+                        </tr>
+                        <tr>
+                            <td>第 11 - 15 格</td>
+                            <td><strong>300 ~ 500</strong> 💎</td>
+                            <td>2,450 💎</td>
+                            <td style="color: var(--warning-orange); font-weight: bold;">⚖️ 存钻按需开</td>
+                        </tr>
+                        <tr>
+                            <td>第 16 格以上</td>
+                            <td><strong>800+</strong> 💎 /格</td>
+                            <td>6,000+ 💎</td>
+                            <td style="color: var(--danger-red); font-weight: bold;">🛑 土豪随意</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 绯闻港口玩家同人攻略站。格子有限，智商无限！</p>
+    </footer>
+
+</body>
+</html>

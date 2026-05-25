@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>限时活动与最新福利兑换码 - 《绯闻港口》攻略站</title>
+    <style>
+        /* --- 沿用全站马卡龙粉蓝主题配色 --- */
+        :root {
+            --primary-pink: #ff7597;
+            --light-pink: #fff0f3;
+            --ocean-blue: #4cc9f0;
+            --ocean-dark: #3a86c8;
+            --text-dark: #4a4a4a;
+            --accent-orange: #ffb703;
+            --success-green: #2ec4b6;
+        }
+
+        body { 
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            padding: 0; 
+            color: var(--text-dark);
+            background-color: #fffbfc;
+        }
+
+        header { 
+            background: linear-gradient(135deg, #ff92ae 0%, var(--primary-pink) 100%); 
+            color: white; 
+            padding: 1.5rem 1rem; 
+            text-align: center; 
+        }
+        header h1 { margin: 0; font-size: 1.8rem; }
+
+        nav { background: var(--ocean-blue); padding: 0.3rem; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        nav a { color: white; text-decoration: none; font-weight: bold; padding: 6px 12px; border-radius: 20px; font-size: 0.9rem; }
+        nav a:hover, nav a.active { background-color: var(--ocean-dark); }
+
+        .container { max-width: 1000px; margin: 20px auto; padding: 0 15px; }
+
+        .section-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(255, 117, 151, 0.05);
+            border: 1px solid #eee;
+        }
+        .section-card h2 { 
+            color: var(--primary-pink); 
+            margin-top: 0; 
+            font-size: 1.4rem;
+            border-bottom: 2px dashed var(--light-pink);
+            padding-bottom: 10px;
+        }
+
+        /* --- 兑换码专属样式 --- */
+        .code-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fff9e6;
+            border: 2px solid var(--accent-orange);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .code-info { display: flex; flex-direction: column; gap: 5px; }
+        .code-text { font-family: monospace; font-size: 1.3rem; color: #d48300; font-weight: bold; }
+        .code-status { font-size: 0.85rem; color: #666; }
+        .copy-btn {
+            background: var(--accent-orange);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .copy-btn:hover { background: #e0a100; }
+
+        /* --- 活动时间轴样式 --- */
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+            border-left: 3px solid var(--light-pink);
+            margin-top: 20px;
+        }
+        .timeline-event {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        /* 时间轴小圆点 */
+        .timeline-event::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            background: var(--primary-pink);
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+        .event-day {
+            font-weight: bold;
+            color: var(--primary-pink);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        .event-details {
+            background: #fdfdfd;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            padding: 12px;
+        }
+        .event-title { font-weight: bold; font-size: 1rem; color: var(--text-dark); margin-bottom: 5px; }
+        .event-strategy { font-size: 0.9rem; color: #666; background: #f0fafd; border-left: 3px solid var(--ocean-blue); padding: 5px 10px; margin-top: 8px; }
+
+        footer { text-align: center; padding: 20px; background: #fdf5f7; margin-top: 40px; font-size: 0.85rem; color: #999; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>📅 限时活动排期与最新福利兑换码</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">首页</a>
+        <a href="merge-guide.html">合成图鉴</a>
+        <a href="events.html" class="active">限时活动</a>
+        <a href="backpack.html">背包优化</a>
+        <a href="story.html">剧情与装修</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- 1. 兑换码板块 -->
+        <section class="section-card">
+            <h2>🎁 最新福利兑换码 (Gift Codes)</h2>
+            <p style="font-size: 0.9rem; color: #666; margin-top: -5px;">提示：请在游戏内【设置 -> 兑换码】中输入以下代码领取奖励。随时可能失效，请尽快兑换！</p>
+            
+            <!-- 兑换码 1 -->
+            <div class="code-box">
+                <div class="code-info">
+                    <span class="code-text">GOSSIP2026</span>
+                    <span class="code-status">🎁 奖励：100 体力 + 20 钻石 | ⏳ 有效期至：本周末</span>
+                </div>
+                <button class="copy-btn" onclick="alert('请手动复制：GOSSIP2026')">点击复制</button>
+            </div>
+
+            <!-- 兑换码 2 -->
+            <div class="code-box" style="border-color: #ddd; background: #f9f9f9; opacity: 0.7;">
+                <div class="code-info">
+                    <span class="code-text" style="color: #888; text-decoration: line-through;">HARBORMAY</span>
+                    <span class="code-status" style="color: #999;">🎁 奖励：免费卡牌包 | ❌ 状态：已过期</span>
+                </div>
+                <button class="copy-btn" style="background: #ccc; cursor: not-allowed;" disabled>已过期</button>
+            </div>
+        </section>
+
+        <!-- 2. 活动排期板块 -->
+        <section class="section-card">
+            <h2>⏳ 常驻周常活动排期表</h2>
+            <p style="font-size: 0.9rem; color: #666; margin-top: -5px;">《绯闻港口》的活动具备极强的规律性，提前攒好高星订单或生成器物是无氪通关的关键。</p>
+            
+            <div class="timeline">
+                
+                <!-- 周一至周三 -->
+                <div class="timeline-event">
+                    <div class="event-day">📅 周一 ~ 周三 (常驻)</div>
+                    <div class="event-details">
+                        <div class="event-title">🏆 烘焙大赛 / 季赛冲榜</div>
+                        <div>通过完成日常订单积攒活动积分，与其他同组玩家竞速，前三名有海量卡牌包和高级箱子奖励。</div>
+                        <div class="event-strategy">
+                            <strong>💡 偷鸡技巧：</strong> 周日完成的高级大订单先别点交付！憋到周一活动开启后再交，可以直接一秒冲上榜首。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 周四 -->
+                <div class="timeline-event">
+                    <div class="event-day">📅 周四 (短期活动)</div>
+                    <div class="event-details">
+                        <div class="event-title">🔍 探案解谜 / 消除气泡</div>
+                        <div>合成特定带特殊标记的道具获取放大镜，用来解锁 Quinn 母亲的日记线索。</div>
+                        <div class="event-strategy">
+                            <strong>💡 核心策略：</strong> 此时尽量去点消耗体力快、产出率高的生成器（如咖啡机），可以快速刷出气泡。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 周五至周日 -->
+                <div class="timeline-event">
+                    <div class="event-day">📅 周五 ~ 周日 (重头戏)</div>
+                    <div class="event-details">
+                        <div class="event-title">🗺️ 周末寻宝大冒险 / 卡牌收集季末冲刺</div>
+                        <div>消耗体力即可在藏宝图上前进，是获取“万能卡（Joker Card）”和最高级蓝色能量罐最稳定、奖励最好的日常活动。</div>
+                        <div class="event-strategy">
+                            <strong>💡 白嫖通关：</strong> 把平时攒的钻石全在周末换成体力（每天买满2-3次）。只要体力不闲置，平民玩家也能拿满最终奖励。
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 绯闻港口玩家同人攻略站。活动多福利满，祝你把把出卡包！</p>
+    </footer>
+
+</body>
+</html>
